@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE System SYSTEM "../LibraryElement.dtd">
+<System Name="System" Comment="System Configuration">
+  <Attribute Name="System.Device.FolderPath" Value="EcoRT_0" />
+  <Identification Standard="61499-1" />
+  <VersionInfo Organization="Schneider Electric" Version="0.0" Author="Schneider" Date="4/9/2025" />
+  <Application ID="98762EAFFE914EAF" Name="APP1">
+    <SubAppNetwork>
+      <FB ID="E12399C02C6BC84C" Name="FB1" Type="ADD_1990CFD1468AAE4A6" x="900" y="580" Namespace="Main">
+        <Attribute Name="Configuration.GenericFBType.InterfaceParams" Value="Runtime.Standard#CNT:=2;IN${CNT}:LREAL" />
+      </FB>
+      <FB ID="B45A17FDAAD7AEF5" Name="FB2" Type="SUB_1990CFD1468AAE4A6" x="840" y="1260" Namespace="Main">
+        <Attribute Name="Configuration.GenericFBType.InterfaceParams" Value="Runtime.Standard#CNT:=2;IN${CNT}:LREAL" />
+      </FB>
+      <FB ID="42290855AF6BBBBC" Name="FB3" Type="MUL_1990CFD1468AAE4A6" x="2220" y="800" Namespace="Main">
+        <Attribute Name="Configuration.GenericFBType.InterfaceParams" Value="Runtime.Standard#CNT:=2;IN${CNT}:LREAL" />
+      </FB>
+      <FB ID="BEECFD94F0BD255E" Name="FB4" Type="DIV_182E0F9E1B4E93726" x="3300" y="1120" Namespace="Main">
+        <Attribute Name="Configuration.GenericFBType.InterfaceParams" Value="Runtime.Standard#CNT:=1;IN${CNT}1:LREAL" />
+      </FB>
+      <EventConnections>
+        <Connection Source="FB1.CNF" Destination="FB3.REQ" dx1="517.4792">
+          <AvoidsNodes>false</AvoidsNodes>
+        </Connection>
+        <Connection Source="FB2.CNF" Destination="FB3.REQ" dx1="577.4792">
+          <AvoidsNodes>false</AvoidsNodes>
+        </Connection>
+        <Connection Source="FB3.CNF" Destination="FB4.REQ" dx1="47.47925" />
+      </EventConnections>
+      <DataConnections>
+        <Connection Source="FB1.OUT" Destination="FB3.IN1" dx1="47.47925" />
+        <Connection Source="FB2.OUT" Destination="FB3.IN2" dx1="70" />
+      </DataConnections>
+    </SubAppNetwork>
+  </Application>
+  <Device ID="278FA7F3-7305-4554-90F5-86266DA767DB" Name="EcoRT_0" Type="Soft_dPAC" x="700" y="700" Namespace="SE.DPAC">
+    <Resource ID="FD2A2484E35386FF" Name="RES0" Type="EMB_RES_ECO" x="800" y="800" Namespace="Runtime.Management">
+      <FBNetwork />
+    </Resource>
+    <FBNetwork />
+  </Device>
+</System>
